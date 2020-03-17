@@ -1,2 +1,1 @@
-# fenix
-A simple angular app
+# Fenix
