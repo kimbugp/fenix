@@ -1,0 +1,25 @@
+{
+  "name": "fenix",
+  "version": "1.0.0",
+  "description": "A simple angular app",
+  "main": "index.ts",
+  "scripts": {
+    "test": "npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kimbugp/fenix.git"
+  },
+  "keywords": [
+    "angular",
+    "signin",
+    "signout",
+    "fenix"
+  ],
+  "author": "Kimbugwe Simon Peter",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kimbugp/fenix/issues"
+  },
+  "homepage": "https://github.com/kimbugp/fenix#readme"
+}
