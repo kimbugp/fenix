@@ -12,20 +12,24 @@ import { HomeComponent } from './home';
 import { LoginComponent } from './login';
 import { RegisterComponent } from './register';
 import { AlertComponent } from './components';
-
+import { ScriptsComponent } from './scripts';
+import { monacoConfig } from './scripts/onMonacoLoad';
+import { MonacoEditorModule } from 'ngx-monaco-editor';
 @NgModule({
     imports: [
         BrowserModule,
         ReactiveFormsModule,
         HttpClientModule,
-        appRoutingModule
+        appRoutingModule,
+        MonacoEditorModule.forRoot(monacoConfig)
     ],
     declarations: [
         AppComponent,
         HomeComponent,
         LoginComponent,
         RegisterComponent,
-        AlertComponent
+        AlertComponent,
+        ScriptsComponent,
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

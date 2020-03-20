@@ -1,6 +1,7 @@
 ﻿const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
+const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
     entry: './src/main.ts',
@@ -41,7 +42,13 @@ module.exports = {
         new webpack.ContextReplacementPlugin(
             /\@angular(\\|\/)core(\\|\/)fesm5/,
             path.resolve(__dirname, 'src')
-        )
+        ),
+        new CopyPlugin([
+            {
+                from: 'node_modules/ngx-monaco-editor/assets/monaco',
+                to: 'assets/monaco/',
+            }
+        ])
     ],
     optimization: {
         splitChunks: {
