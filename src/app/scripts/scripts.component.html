@@ -10,14 +10,14 @@
             <th scope="col">Actions</th>
         </tr>
     </thead>
-    <tbody *ngFor="let user of users">
+    <tbody *ngFor="let script of scripts">
         <tr>
             <th scope="row">{{script.id}}</th>
             <td>{{script.owner}}</td>
             <td>{{script.name}}</td>
-            <td>20 <a (click)="deleteUser(user.id)" class="text-danger">View</a></td>
+            <td>20 <a (click)="viewScript(script.id)" class="text-danger">View</a></td>
             <td>
-                <a (click)="deleteUser(user.id)" class="text-danger">Delete</a>
+                <a (click)="deleteScript(script.id)" class="text-danger">Delete</a>
             </td>
         </tr>
     </tbody>

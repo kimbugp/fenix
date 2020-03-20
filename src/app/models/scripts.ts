@@ -1,5 +1,6 @@
 export class Scripts {
     id: number;
     owner: number;
-    content: []
+    content: string[];
+    name: string;
 }

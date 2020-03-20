@@ -3,6 +3,7 @@ import { first } from 'rxjs/operators';
 
 import { User } from '@/models';
 import { UserService, AuthenticationService } from '@/services';
+import { Router } from '@angular/router';
 
 @Component({ templateUrl: 'home.component.html' })
 export class HomeComponent implements OnInit {
@@ -11,7 +12,9 @@ export class HomeComponent implements OnInit {
 
     constructor(
         private authenticationService: AuthenticationService,
-        private userService: UserService
+        private userService: UserService,
+        private router: Router,
+
     ) {
         this.currentUser = this.authenticationService.currentUserValue;
     }
@@ -24,6 +27,10 @@ export class HomeComponent implements OnInit {
         this.userService.delete(id)
             .pipe(first())
             .subscribe(() => this.loadAllUsers());
+    }
+
+    viewUser(id: number) {
+        this.router.navigate([`/scripts`])
     }
 
     private loadAllUsers() {

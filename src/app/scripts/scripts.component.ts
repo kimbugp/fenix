@@ -1,34 +1,41 @@
 ﻿import { Component, OnInit } from '@angular/core';
 import { first } from 'rxjs/operators';
 
-import { User } from '@/models';
-import { UserService, AuthenticationService } from '@/services';
+import { User, Scripts } from '@/models';
+import { AuthenticationService } from '@/services';
+import { ScriptsService } from '@/services/scripts.service';
+import { Router } from '@angular/router';
 
 @Component({ templateUrl: 'scripts.component.html' })
 export class ScriptsComponent implements OnInit {
     currentUser: User;
-    users = [];
+    scripts: Scripts[] = [{ owner: 1, id: 2, content: ['DoThat()', "DOthis()"], name: 'Sample' }];
 
     constructor(
         private authenticationService: AuthenticationService,
-        private userService: UserService
+        private scriptService: ScriptsService,
+        private router: Router,
+
     ) {
         this.currentUser = this.authenticationService.currentUserValue;
     }
 
     ngOnInit() {
-        this.loadAllUsers();
+        // this.loadScripts();
     }
 
-    deleteUser(id: number) {
-        this.userService.delete(id)
+    deleteScript(id: number) {
+        this.scriptService.delete(id)
             .pipe(first())
-            .subscribe(() => this.loadAllUsers());
+            .subscribe(() => this.loadScripts());
+    }
+    viewScript(id: number) {
+        this.router.navigate([`/scripts/${id}`])
     }
 
-    private loadAllUsers() {
-        this.userService.getAll()
+    private loadScripts() {
+        this.scriptService.getAll()
             .pipe(first())
-            .subscribe(users => this.users = users);
+            .subscribe(scripts => this.scripts = scripts);
     }
 }
