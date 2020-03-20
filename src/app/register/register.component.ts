@@ -29,7 +29,8 @@ export class RegisterComponent implements OnInit {
             firstName: ['', Validators.required],
             lastName: ['', Validators.required],
             username: ['', Validators.required],
-            password: ['', [Validators.required, Validators.minLength(6)]]
+            password: ['', [Validators.required, Validators.minLength(6)]],
+            userType: ['user', Validators.required]
         });
     }
 
@@ -46,12 +47,13 @@ export class RegisterComponent implements OnInit {
         if (this.registerForm.invalid) {
             return;
         }
-
+        console.log(this.registerForm.value)
         this.loading = true;
         this.userService.register(this.registerForm.value)
             .pipe(first())
             .subscribe(
                 data => {
+                    console.log(data)
                     this.alertService.success('Registration successful', true);
                     this.router.navigate(['/login']);
                 },

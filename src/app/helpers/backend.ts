@@ -7,7 +7,7 @@ import { delay, mergeMap, materialize, dematerialize } from 'rxjs/operators';
 let users = JSON.parse(localStorage.getItem('users')) || [];
 
 @Injectable()
-export class FakeBackendInterceptor implements HttpInterceptor {
+export class BackendInterceptor implements HttpInterceptor {
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         const { url, method, headers, body } = request;
 
@@ -45,7 +45,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                 username: user.username,
                 firstName: user.firstName,
                 lastName: user.lastName,
-                token: 'fake-jwt-token'
+                token: 'jwttoken'
             })
         }
 
@@ -58,6 +58,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
 
             user.id = users.length ? Math.max(...users.map(x => x.id)) + 1 : 1;
             users.push(user);
+            console.log(user)
             localStorage.setItem('users', JSON.stringify(users));
 
             return ok();
@@ -76,8 +77,6 @@ export class FakeBackendInterceptor implements HttpInterceptor {
             return ok();
         }
 
-        // helper functions
-
         function ok(body?) {
             return of(new HttpResponse({ status: 200, body }))
         }
@@ -91,7 +90,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
         }
 
         function isLoggedIn() {
-            return headers.get('Authorization') === 'Bearer fake-jwt-token';
+            return headers.get('Authorization') === 'Bearer jwttoken';
         }
 
         function idFromUrl() {
@@ -101,9 +100,8 @@ export class FakeBackendInterceptor implements HttpInterceptor {
     }
 }
 
-export const fakeBackendProvider = {
-    // use fake backend in place of Http service for backend-less development
+export const BackendProvider = {
     provide: HTTP_INTERCEPTORS,
-    useClass: FakeBackendInterceptor,
+    useClass: BackendInterceptor,
     multi: true
 };
