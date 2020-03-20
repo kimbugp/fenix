@@ -12,9 +12,11 @@ import { HomeComponent } from './home';
 import { LoginComponent } from './login';
 import { RegisterComponent } from './register';
 import { AlertComponent } from './components';
-import { ScriptsComponent } from './scripts';
-import { monacoConfig } from './scripts/onMonacoLoad';
+import { ScriptComponent } from './script';
+import { monacoConfig } from './script/onMonacoLoad';
 import { MonacoEditorModule } from 'ngx-monaco-editor';
+import { ScriptsComponent } from './scripts';
+import { NotAuthorized } from './authorized';
 @NgModule({
     imports: [
         BrowserModule,
@@ -29,7 +31,9 @@ import { MonacoEditorModule } from 'ngx-monaco-editor';
         LoginComponent,
         RegisterComponent,
         AlertComponent,
+        ScriptComponent,
         ScriptsComponent,
+        NotAuthorized
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

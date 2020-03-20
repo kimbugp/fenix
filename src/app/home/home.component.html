@@ -18,7 +18,7 @@
             <td>{{user.firstName}} {{user.lastName}}</td>
             <td>{{user.username}} </td>
             <td>{{user.userType}}</td>
-            <td>20 <a (click)="deleteUser(user.id)" class="text-danger">View</a></td>
+            <td>20 <a href='/user/'{{user.id}} class="text-danger">View</a></td>
             <td>
                 <a (click)="deleteUser(user.id)" class="text-danger">Delete</a>
             </td>

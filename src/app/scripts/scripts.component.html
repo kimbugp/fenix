@@ -1,4 +1,24 @@
 ﻿<h1>Hello {{currentUser.firstName}}!</h1>
 <p>Welcome to fenix online code runner</p>
-<h3>Scripts</h3>
-<ngx-monaco-editor [options]="options"  [model]="model" ></ngx-monaco-editor>
+<h3>User Scripts</h3>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Owner</th>
+            <th scope="col">Script Name</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody *ngFor="let user of users">
+        <tr>
+            <th scope="row">{{script.id}}</th>
+            <td>{{script.owner}}</td>
+            <td>{{script.name}}</td>
+            <td>20 <a (click)="deleteUser(user.id)" class="text-danger">View</a></td>
+            <td>
+                <a (click)="deleteUser(user.id)" class="text-danger">Delete</a>
+            </td>
+        </tr>
+    </tbody>
+</table>

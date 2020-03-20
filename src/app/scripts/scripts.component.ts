@@ -1,44 +1,21 @@
-﻿import { Component, OnInit, Input } from '@angular/core';
+﻿import { Component, OnInit } from '@angular/core';
 import { first } from 'rxjs/operators';
-import { MonacoEditorModule } from 'ngx-monaco-editor';
+
 import { User } from '@/models';
 import { UserService, AuthenticationService } from '@/services';
 
 @Component({ templateUrl: 'scripts.component.html' })
 export class ScriptsComponent implements OnInit {
     currentUser: User;
-    users =[]
-    @Input() activeTheme = 'vs';
-    @Input() readOnly = false;
-    @Input()
-    script = [
-        "DoTheOtherThing(float)",
-        "DoTheOtherThing(float)",
-        "DoTheOtherThing(float)",
-        "DoTheOtherThing(float)",
-        "DoTheOtherThing(float)",
-        "DoTheOtherThing(float)",
-        "DoTheOtherThing(float)",
-        "DoTheOtherThing(float)",
-        "DoTheOtherThing(float)",
-        "DoTheOtherThing(float)",
-        "DoTheOtherThing(float)",
-        "DoTheOtherThing(float)",
-        "DoTheOtherThing(float)",
-	].join('\n');
-    model = {
-        value: this.script,
-        language: 'fenixlang',
-      };
+    users = [];
+
     constructor(
         private authenticationService: AuthenticationService,
         private userService: UserService
     ) {
         this.currentUser = this.authenticationService.currentUserValue;
     }
-    onCodeChanged(value: any) {
-        console.log('CODE', value);
-    }
+
     ngOnInit() {
         this.loadAllUsers();
     }
@@ -55,4 +32,3 @@ export class ScriptsComponent implements OnInit {
             .subscribe(users => this.users = users);
     }
 }
-
