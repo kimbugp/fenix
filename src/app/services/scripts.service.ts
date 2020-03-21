@@ -13,6 +13,9 @@ export class ScriptsService {
     get(id: number) {
         return this.http.get<Scripts>(`${config.apiUrl}/scripts/${id}`);
     }
+    patch(id: number) {
+        return this.http.patch(`${config.apiUrl}/scripts/${id}`,Scripts);
+    }
 
     register(Scripts: Scripts) {
         return this.http.post(`${config.apiUrl}/scripts/`, Scripts);
