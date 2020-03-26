@@ -9,7 +9,7 @@ import { ScriptsComponent } from './scripts';
 import { NotAuthorized } from './authorized';
 
 const routes: Routes = [
-    { path: '', component: HomeComponent, canActivate: [AuthGuard, AdminGuard] },
+    { path: '', component: HomeComponent, canActivate: [AuthGuard] },
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent },
     { path: 'scripts/:id', component: ScriptComponent, canActivate: [AuthGuard] },

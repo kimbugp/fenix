@@ -17,6 +17,17 @@ router.post('/users', async (req, res) => {
     }
 })
 
+router.get('/users', auth, admin.isAdmin, async (req, res) => {
+    // Get all users
+    try {
+        const users = await User.find()
+        res.status(200).send({ users })
+    } catch (error) {
+        res.status(400).send(error)
+    }
+})
+
+
 router.post('/users/login', async (req, res) => {
     //Login a registered user
     try {
@@ -33,7 +44,7 @@ router.post('/users/login', async (req, res) => {
 
 })
 
-router.get('/users/scripts', auth, async (req, res) => {
+router.get('/users/me', auth, async (req, res) => {
     // View logged in user profile
     res.send(req.user)
 })
@@ -62,12 +73,20 @@ router.post('/users/add', auth, admin.isAdmin, async (req, res) => {
     }
 })
 
-router.post('/users/update/:userId', auth, admin.isAdmin, async (req, res) => {
+router.put('/users/:userId', auth, admin.isAdmin, async (req, res) => {
     // update  user
     try {
-        const user = new User(req.body)
-        const user = await User.findOneAndUpdate({ _id: req.params.userId }, req.body)
-        res.status(201).send({ user })
+        const user = await User.findOneAndUpdate({ _id: req.params.userId }, { $set: { ...req.body } })
+        res.status(200).send({ user })
+    } catch (error) {
+        res.status(400).send(error)
+    }
+})
+router.delete('/users/:userId', auth, admin.isAdmin, async (req, res) => {
+    // update  user
+    try {
+        const user = await User.findByIdAndDelete(req.params.userId)
+        res.status(200).send({ user })
     } catch (error) {
         res.status(400).send(error)
     }

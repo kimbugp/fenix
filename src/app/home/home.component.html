@@ -1,27 +1,51 @@
-﻿<h1>Hello {{currentUser.firstName}}!</h1>
+﻿<h1>Hello {{currentUser.name}}!</h1>
 <p>Welcome to fenix online code runner</p>
 <h3>Users</h3>
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Name</th>
-            <th scope="col">Username</th>
-            <th scope="col">Is Admin</th>
-            <th scope="col">Scripts</th>
-            <th scope="col">Actions</th>
-        </tr>
-    </thead>
-    <tbody *ngFor="let user of users">
-        <tr>
-            <th scope="row">{{user.id}}</th>
-            <td>{{user.firstName}} {{user.lastName}}</td>
-            <td>{{user.username}} </td>
-            <td>{{user.IsAdmin}}</td>
-            <td>20<a (click)="viewUser(user.id)" class="text-danger">View</a></td>
-            <td>
-                <a (click)="deleteUser(user.id)" class="text-danger">Delete</a>
-            </td>
-        </tr>
-    </tbody>
-</table>
+
+<ngx-ui-loader></ngx-ui-loader>
+<div class="columns">
+    <div class="column col-2">
+        <button (click)="addRow()" id="add-row-button" class="btn btn-primary">Add User</button>
+    </div>
+</div>
+<ngx-table [data]="users" #table [configuration]="configuration" [columns]="columns">
+</ngx-table>
+
+
+
+<ng-template #nameTpl let-row let-rowIndex="rowIndex">
+    <div *ngIf="editRow !== rowIndex">{{row.name}}</div>
+    <div *ngIf="editRow === rowIndex">
+        <input type="text" #name placeholder="name" class="form-label" [value]="row.name">
+    </div>
+</ng-template>
+<ng-template #isAdminTpl let-row let-rowIndex="rowIndex">
+    <div *ngIf="editRow !== rowIndex">{{row.isAdmin}}</div>
+    <div *ngIf="editRow === rowIndex">
+        <div class="form-group">
+            <select class="form-select" #isAdmin>
+                <option>true</option>
+                <option>false</option>
+            </select>
+        </div>
+    </div>
+</ng-template>
+<ng-template #emailTpl let-row let-rowIndex="rowIndex">
+    <div *ngIf="editRow !== rowIndex">{{row.email}}</div>
+    <div *ngIf="editRow === rowIndex">
+        <input type="text" #email placeholder="email" class="form-label" [value]="row.email">
+    </div>
+</ng-template>
+
+<ng-template #passwordTpl let-row let-rowIndex="rowIndex">
+    <div *ngIf="editRow !== rowIndex">{{row.password}}</div>
+    <div *ngIf="editRow === rowIndex">
+        <input type="password" #password placeholder="password" class="form-label" [value]="row.password">
+    </div>
+</ng-template>
+
+<ng-template #actionTpl let-row let-rowIndex="rowIndex">
+    <div *ngIf="editRow !== rowIndex" class="btn btn-primary" (click)="edit(rowIndex)">Edit</div>
+    <div *ngIf="editRow !== rowIndex" class="btn btn-primary" (click)="remove(row._id)">Delete</div>
+    <div *ngIf="editRow === rowIndex" class="btn btn-primary" (click)="update(row._id)">Save</div>
+</ng-template>

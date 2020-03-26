@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 const scriptsSchema = mongoose.Schema({
-    author: { type: Schema.Types.ObjectId, ref: 'User' },
+    author: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
     name: {
         type: String,
         required: true,
@@ -11,6 +11,10 @@ const scriptsSchema = mongoose.Schema({
         type: String,
         required: true,
         trim: true
+    },
+    lastRun: {
+        type: Date,
+        default: Date.now()
     },
     output: [{
         date: {

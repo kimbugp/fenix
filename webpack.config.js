@@ -22,8 +22,22 @@ module.exports = {
                 use: 'html-loader'
             },
             {
-                test: /\.less$/,
-                use: ['style-loader', 'css-loader', 'less-loader']
+                test: /\.(scss|sass)$/,
+                use: [
+                    'to-string-loader',
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            sourceMap: true
+                        }
+                    },
+                    {
+                        loader: 'sass-loader',
+                        options: {
+                            sourceMap: true
+                        }
+                    }
+                ],
             },
             {
                 test: /[\/\\]@angular[\/\\].+\.js$/,
@@ -36,7 +50,7 @@ module.exports = {
         new webpack.DefinePlugin({
             // configuration object
             config: JSON.stringify({
-                apiUrl: 'http://localhost:4000'
+                apiUrl: 'http://localhost:3000'
             })
         }),
         new webpack.ContextReplacementPlugin(

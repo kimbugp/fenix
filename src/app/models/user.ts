@@ -1,9 +1,8 @@
 ﻿export class User {
-    id: number;
-    username: string;
-    password: string;
-    firstName: string;
-    lastName: string;
-    token: string;
-    IsAdmin: boolean
+    _id?: number;
+    email: string;
+    password?: string;
+    name: string;
+    token?: string;
+    isAdmin: boolean
 }

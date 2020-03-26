@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { AuthenticationService } from './services';
 import { User } from './models';
 
-import './styles/app.less';
+import './styles/app.scss';
 
 @Component({ selector: 'app', templateUrl: 'app.component.html' })
 export class AppComponent {

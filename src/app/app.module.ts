@@ -3,8 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
-import { BackendProvider } from './helpers';
-
 import { appRoutingModule } from './app.routing';
 import { JwtInterceptor, ErrorInterceptor } from './helpers';
 import { AppComponent } from './app.component';
@@ -17,13 +15,20 @@ import { monacoConfig } from './script/onMonacoLoad';
 import { MonacoEditorModule } from 'ngx-monaco-editor';
 import { ScriptsComponent } from './scripts';
 import { NotAuthorized } from './authorized';
+
+import { TableModule } from 'ngx-easy-table';
+import { NgxUiLoaderModule } from 'ngx-ui-loader';
+
+
 @NgModule({
     imports: [
         BrowserModule,
+        TableModule,
         ReactiveFormsModule,
         HttpClientModule,
         appRoutingModule,
-        MonacoEditorModule.forRoot(monacoConfig)
+        MonacoEditorModule.forRoot(monacoConfig),
+        NgxUiLoaderModule,
     ],
     declarations: [
         AppComponent,
@@ -33,13 +38,11 @@ import { NotAuthorized } from './authorized';
         AlertComponent,
         ScriptComponent,
         ScriptsComponent,
-        NotAuthorized
+        NotAuthorized,
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
         { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
-
-        BackendProvider
     ],
     bootstrap: [AppComponent]
 })

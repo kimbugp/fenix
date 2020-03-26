@@ -7,7 +7,6 @@ function fakerun(scriptStr) {
         if (line.length == 11) {
             throw "Random Error!";
         }
-
         if (line.startsWith('DoThis')) {
             output.push(line.length);
         } else if (line.startsWith('DoThat')) {

@@ -13,7 +13,7 @@ async function createSuperUser() {
     try {
         await user.save()
         const token = await user.generateAuthToken()
-        console.log(token)
+        console.log(user)
         return token
     } catch (error) {
         console.log(error)

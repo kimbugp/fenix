@@ -15,10 +15,10 @@ const adminOrOwner = async (req, res, next) => {
             const script = Scripts.findById(scriptId)
             req.script = script
             if (user.isAdmin) {
-                next()
+                return next()
             }
             if (script && script.author === user) {
-                next()
+                return next()
             }
             res.status(401).send({ error: 'Not authorized to access this resource' })
 
@@ -36,7 +36,7 @@ const isAdmin = async (req, res, next) => {
     try {
         const user = req.user
         if (user.isAdmin) {
-            next()
+            return next()
         }
         res.status(401).send({ error: 'Not authorized to access this resource' })
     } catch (error) {

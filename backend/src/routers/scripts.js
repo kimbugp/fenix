@@ -79,3 +79,4 @@ router.get('/scripts/:scriptId/outputs', auth, admin.adminOrOwner, async (req, r
         res.status(400).send(error)
     }
 })
+module.exports = router
