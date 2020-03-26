@@ -5,5 +5,5 @@
     firstName: string;
     lastName: string;
     token: string;
-    userType: string
+    IsAdmin: boolean
 }

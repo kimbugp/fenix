@@ -7,7 +7,7 @@
             <th scope="col">#</th>
             <th scope="col">Name</th>
             <th scope="col">Username</th>
-            <th scope="col">User Type</th>
+            <th scope="col">Is Admin</th>
             <th scope="col">Scripts</th>
             <th scope="col">Actions</th>
         </tr>
@@ -17,7 +17,7 @@
             <th scope="row">{{user.id}}</th>
             <td>{{user.firstName}} {{user.lastName}}</td>
             <td>{{user.username}} </td>
-            <td>{{user.userType}}</td>
+            <td>{{user.IsAdmin}}</td>
             <td>20<a (click)="viewUser(user.id)" class="text-danger">View</a></td>
             <td>
                 <a (click)="deleteUser(user.id)" class="text-danger">Delete</a>
