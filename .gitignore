@@ -15,3 +15,6 @@ typings
 .npm
 
 dist
+.env
+.env
+package-lock.json
