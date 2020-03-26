@@ -46,19 +46,7 @@ userSchema.pre('save', async function (next) {
     }
     next()
 })
-userSchema.pre('update', async function (next) {
-    const password = this.getUpdate().$set.password;
-    if (!password) {
-        return next();
-    }
-    try {
-        const hash = await bcrypt.hash(password, 8)
-        this.getUpdate().$set.password = hash;
-        next();
-    } catch (error) {
-        return next(error);
-    }
-});
+
 
 userSchema.methods.generateAuthToken = async function () {
     // Generate an auth token for the user

@@ -100,7 +100,8 @@ export class HomeComponent implements OnInit {
         const obj = {
             isAdmin: this.isAdmin.nativeElement.value,
             name: this.name.nativeElement.value,
-            email: this.email.nativeElement.value
+            email: this.email.nativeElement.value,
+            password: this.password.nativeElement.value
         }
         this.userService.update(id, obj)
             .pipe(first()).subscribe(() => this.loadAllUsers())

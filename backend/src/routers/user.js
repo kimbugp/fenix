@@ -2,6 +2,7 @@ const express = require('express')
 const User = require('../models/User')
 const auth = require('../middleware/auth')
 const admin = require('../middleware/admin')
+const bcrypt = require('bcryptjs')
 
 const router = express.Router()
 
@@ -76,7 +77,11 @@ router.post('/users/add', auth, admin.isAdmin, async (req, res) => {
 router.put('/users/:userId', auth, admin.isAdmin, async (req, res) => {
     // update  user
     try {
-        const user = await User.findOneAndUpdate({ _id: req.params.userId }, { $set: { ...req.body } })
+        const password = req.body.password
+        if (password !== undefined) {
+            req.body.password = await bcrypt.hash(password, 8)
+        }
+        const user = await User.findByIdAndUpdate(req.params.userId, { ...req.body })
         res.status(200).send({ user })
     } catch (error) {
         res.status(400).send(error)
