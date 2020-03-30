@@ -1,6 +1,7 @@
 export class Scripts {
-    id: number;
-    owner: number;
-    content: string[];
-    name: string;
+    _id?: string;
+    author: string;
+    content?: string[];
+    name: string | any;
+    output?: { content: [] }[]
 }

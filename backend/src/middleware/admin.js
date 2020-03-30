@@ -21,13 +21,12 @@ const adminOrOwner = async (req, res, next) => {
                 return next()
             }
             res.status(401).send({ error: 'Not authorized to access this resource' })
-
         }
         else {
             res.status(400).send({ error: 'Invalid id' })
         }
     } catch (error) {
-        res.status(400).send({ error: error })
+        res.status(500).send(error)
     }
 
 }
@@ -40,7 +39,7 @@ const isAdmin = async (req, res, next) => {
         }
         res.status(401).send({ error: 'Not authorized to access this resource' })
     } catch (error) {
-        res.status(400).send({ error: error })
+        res.status(400).send(error)
     }
 }
 module.exports = { adminOrOwner, isAdmin }

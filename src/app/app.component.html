@@ -1,6 +1,8 @@
 ﻿<!-- nav -->
+
 <nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="currentUser">
     <div class="navbar-nav">
+        <a *ngIf="currentUser.isAdmin" class="nav-item nav-link" routerLink="/admin">Admin</a>
         <a class="nav-item nav-link" routerLink="/">Home</a>
         <a class="nav-item nav-link" routerLink="/scripts">Scripts</a>
         <a class="nav-item nav-link" (click)="logout()">Logout</a>

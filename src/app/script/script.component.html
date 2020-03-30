@@ -4,5 +4,37 @@
 <div>
     <h3>Name: {{script.name}}</h3>
 </div>
-<ngx-monaco-editor [options]="options" [model]="model" (onInit)="saveScript($event)"></ngx-monaco-editor>
-<button (click)="runScript()">Run</button>
+<ngx-monaco-editor [options]="options" [model]="model" (onInit)="getEditor($event)"></ngx-monaco-editor>
+<button [disabled]="loading" class="btn btn-primary" (click)="saveScript()">
+    <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+    Save
+</button>
+<button [disabled]="loading" class="btn btn-primary" (click)="runScript()">
+    <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+    Run
+</button>
+
+
+<h3 class="card-header">Outputs</h3>
+<div class="row">
+    <div class="col" *ngIf="script">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Date Run</th>
+                    <th scope="col">Author</th>
+                </tr>
+            </thead>
+            <tbody *ngFor="let item of script.output; let i =index" [attr.data-index]='i'>
+                <tr>
+                    <td>{{item.date}}</td>
+                    <td>{{script.author}}</td>
+                    <td><a (click)="updateOutput(i)" class="text-danger">View</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="col">
+        <ngx-monaco-editor [options]="options" [model]="model2" (onInit)="getEditor2($event)"></ngx-monaco-editor>
+    </div>
+</div>

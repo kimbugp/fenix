@@ -8,20 +8,27 @@ export class ScriptsService {
     constructor(private http: HttpClient) { }
 
     getAll() {
-        return this.http.get<Scripts[]>(`${config.apiUrl}/scripts`);
+        return this.http.get<{ scripts: Scripts[] }>(`${config.apiUrl}/scripts`);
     }
-    get(id: number) {
-        return this.http.get<Scripts>(`${config.apiUrl}/scripts/${id}`);
+    adminGetAll() {
+        return this.http.get<{ scripts: Scripts[] }>(`${config.apiUrl}/admin/scripts`);
     }
-    patch(id: number) {
-        return this.http.patch(`${config.apiUrl}/scripts/${id}`,Scripts);
+    get(id: string) {
+        return this.http.get<{ script: Scripts }>(`${config.apiUrl}/scripts/${id}`);
+    }
+    put(_id: string, script: Scripts) {
+        return this.http.put<{ script: Scripts }>(`${config.apiUrl}/scripts/${_id}`, script);
     }
 
-    register(Scripts: Scripts) {
-        return this.http.post(`${config.apiUrl}/scripts/`, Scripts);
+    create(Script: Scripts) {
+        return this.http.post<{ script: Scripts }>(`${config.apiUrl}/scripts/`, Script);
     }
 
-    delete(id: number) {
+    delete(id: string) {
         return this.http.delete(`${config.apiUrl}/scripts/${id}`);
+    }
+
+    runScript(_id: string) {
+        return this.http.get<{ script: Scripts }>(`${config.apiUrl}/scripts/${_id}/run`);
     }
 }

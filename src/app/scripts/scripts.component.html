@@ -1,23 +1,28 @@
 ﻿<h1>Hello {{currentUser.name}}!</h1>
 <p>Welcome to fenix online code runner</p>
 <h3>User Scripts</h3>
+<div class="columns">
+    <div class="column col-2">
+        <button (click)="createScript()" id="add-row-button" class="btn btn-primary">Create Script</button>
+    </div>
+</div>
 <table class="table table-striped">
     <thead>
         <tr>
             <th scope="col">#</th>
-            <th scope="col">Owner</th>
+            <th scope="col">Author</th>
             <th scope="col">Script Name</th>
             <th scope="col">Actions</th>
         </tr>
     </thead>
     <tbody *ngFor="let script of scripts">
         <tr>
-            <th scope="row">{{script.id}}</th>
-            <td>{{script.owner}}</td>
+            <th scope="row">{{script._id}}</th>
+            <td>{{script.author}}</td>
             <td>{{script.name}}</td>
-            <td>20 <a (click)="viewScript(script.id)" class="text-danger">View</a></td>
+            <td>{{script.content.length}} <a (click)="viewScript(script._id)" class="text-danger">View</a></td>
             <td>
-                <a (click)="deleteScript(script.id)" class="text-danger">Delete</a>
+                <a (click)="deleteScript(script._id)" class="text-danger">Delete</a>
             </td>
         </tr>
     </tbody>

@@ -1,5 +1,21 @@
 const mongoose = require('mongoose')
 
+
+var output = new mongoose.Schema({
+    isActive: {
+        type: Boolean,
+        default: false
+    },
+    date: {
+        type: Date,
+        default: Date.now()
+    },
+    content: {
+        type: Array,
+        default: []
+    }
+});
+
 const scriptsSchema = mongoose.Schema({
     author: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
     name: {
@@ -8,7 +24,7 @@ const scriptsSchema = mongoose.Schema({
         trim: true
     },
     content: {
-        type: String,
+        type: Array,
         required: true,
         trim: true
     },
@@ -16,15 +32,7 @@ const scriptsSchema = mongoose.Schema({
         type: Date,
         default: Date.now()
     },
-    output: [{
-        date: {
-            type: Date,
-            default: Date.now()
-        },
-        content: {
-            type: String,
-        }
-    }],
+    output: [output],
     date: {
         type: Date,
         default: Date.now()

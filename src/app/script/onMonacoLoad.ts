@@ -43,9 +43,9 @@ export function onMonacoLoad() {
                 insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
             },
             {
-                label: 'DoTheOtherThing',
+                label: 'DoThisThing',
                 kind: monaco.languages.CompletionItemKind.Keyword,
-                insertText: 'DoTheOtherThing(${1:argument})',
+                insertText: 'DoThisThing(${1:argument})',
                 insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
 
             }

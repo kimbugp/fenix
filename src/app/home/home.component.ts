@@ -1,11 +1,12 @@
 ﻿import { Component, OnInit, ViewChild, TemplateRef, ChangeDetectionStrategy, ElementRef } from '@angular/core';
 import { first } from 'rxjs/operators';
 
-import { User } from '@/models';
+import { User, Scripts } from '@/models';
 import { UserService, AuthenticationService } from '@/services';
 import { Router } from '@angular/router';
 import { Columns, API, Config, DefaultConfig, APIDefinition } from 'ngx-easy-table';
 import { NgxUiLoaderService } from 'ngx-ui-loader'; // Import NgxUiLoaderService
+import { ScriptsService } from '@/services/scripts.service';
 
 @Component({
     templateUrl: 'home.component.html',
@@ -30,12 +31,13 @@ export class HomeComponent implements OnInit {
     public users = [];
     public columns: Columns[]
     columnsCopy: Columns[] = [];
-
+    scripts: Scripts[];
     constructor(
         private authenticationService: AuthenticationService,
         private userService: UserService,
         private router: Router,
-        private ngxService: NgxUiLoaderService
+        private ngxService: NgxUiLoaderService,
+        private scriptService: ScriptsService
 
     ) {
         this.callLoader();
@@ -69,7 +71,21 @@ export class HomeComponent implements OnInit {
         ]
         this.columns = this.columnsCopy
         this.loadAllUsers();
+
+
+        // load scripts
+        this.loadScripts()
+
     }
+    private loadScripts() {
+        this.scriptService.adminGetAll()
+            .pipe(first())
+            .subscribe(response => this.scripts = response.scripts);
+    }
+    viewScript(id: string) {
+        this.router.navigate([`/scripts/${id}`])
+    }
+
     addRow(): void {
         const obj = {
             isAdmin: false,

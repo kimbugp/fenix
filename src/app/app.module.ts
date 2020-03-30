@@ -13,12 +13,13 @@ import { AlertComponent } from './components';
 import { ScriptComponent } from './script';
 import { monacoConfig } from './script/onMonacoLoad';
 import { MonacoEditorModule } from 'ngx-monaco-editor';
-import { ScriptsComponent } from './scripts';
+import { ScriptsComponent, CreateScriptsComponent } from './scripts';
 import { NotAuthorized } from './authorized';
 
 import { TableModule } from 'ngx-easy-table';
 import { NgxUiLoaderModule } from 'ngx-ui-loader';
-
+import { TabsComponent } from './tabs/tabs.component';
+import { TabComponent } from './tabs/tab.component';
 
 @NgModule({
     imports: [
@@ -38,6 +39,9 @@ import { NgxUiLoaderModule } from 'ngx-ui-loader';
         AlertComponent,
         ScriptComponent,
         ScriptsComponent,
+        CreateScriptsComponent,
+        TabsComponent,
+        TabComponent,
         NotAuthorized,
     ],
     providers: [
