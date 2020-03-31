@@ -4,7 +4,7 @@
   "scripts": {
     "build": "webpack --mode production",
     "start": "BASE_URL=http://localhost:3000 webpack-dev-server --mode development --open",
-    "heroku-postbuild": "npm run build;cd backend;npm install;cd .."
+    "heroku-postbuild": "npm run build&&cd backend&&npm install&&cd .."
   },
   "dependencies": {
     "@angular/cdk": "^8.2.3",
