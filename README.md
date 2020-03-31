@@ -79,7 +79,3 @@ ADMIN_NAME
 ADMIN_PASSWORD
 ADMIN_EMAIL
 ```
-
-## Demo app
-
-- Go to the url `https://fenixscript.herokuapp.com/`
