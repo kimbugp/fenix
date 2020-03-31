@@ -79,3 +79,7 @@ ADMIN_NAME
 ADMIN_PASSWORD
 ADMIN_EMAIL
 ```
+
+## Demo deployment
+
+- `https://fenixscript.herokuapp.com/`

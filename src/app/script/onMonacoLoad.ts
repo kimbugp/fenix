@@ -35,19 +35,36 @@ export function onMonacoLoad() {
                 kind: monaco.languages.CompletionItemKind.Keyword,
                 insertText: 'DoTheOtherThing(${1:argument})',
                 insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                range: {
+                    startLineNumber: 1,
+                    startColumn: 1,
+                    endLineNumber: 1,
+                    endColumn: 1
+                }
             },
             {
                 label: 'DoThatThing',
                 kind: monaco.languages.CompletionItemKind.Keyword,
                 insertText: 'DoThatThing(${1:argument})',
                 insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                range: {
+                    startLineNumber: 1,
+                    startColumn: 1,
+                    endLineNumber: 1,
+                    endColumn: 1
+                }
             },
             {
                 label: 'DoThisThing',
                 kind: monaco.languages.CompletionItemKind.Keyword,
                 insertText: 'DoThisThing(${1:argument})',
                 insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
-
+                range: {
+                    startLineNumber: 1,
+                    startColumn: 1,
+                    endLineNumber: 1,
+                    endColumn: 1
+                }
             }
             ];
             return { suggestions: suggestions };
