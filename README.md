@@ -53,3 +53,33 @@ ADMIN_NAME
 ADMIN_PASSWORD
 ADMIN_EMAIL
 ```
+
+## Full stack setup
+
+- Run
+
+```
+git clone https://github.com/kimbugp/fenix.git && cd fenix
+```
+
+- Copy the `.env.example` rename it to `.env` and update the environment variables accordingly
+- Run
+
+```
+bash start.sh
+```
+
+Go to the url
+`http://localhost:3000`
+
+- To login in as admin use the variable in the backend .env file
+
+```
+ADMIN_NAME
+ADMIN_PASSWORD
+ADMIN_EMAIL
+```
+
+## Demo app
+
+- Go to the url `https://fenixscript.herokuapp.com/`

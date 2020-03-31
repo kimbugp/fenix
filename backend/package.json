@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "env-cmd -f ./.env nodemon src/app.js"
+    "start": "env-cmd -f ../.env nodemon src/app.js"
   },
-  "author": "Frank Atukunda",
+  "author": "Kimbugwe Simon Peter",
   "license": "MIT",
   "dependencies": {
     "bcryptjs": "^2.4.3",

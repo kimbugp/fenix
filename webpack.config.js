@@ -50,7 +50,7 @@ module.exports = {
         new webpack.DefinePlugin({
             // configuration object
             config: JSON.stringify({
-                apiUrl: 'http://localhost:3000'
+                apiUrl: process.env.BASE_URL || ''
             })
         }),
         new webpack.ContextReplacementPlugin(
