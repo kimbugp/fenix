@@ -22,22 +22,23 @@
 - Run
 
 ```
-git clone https://github.com/kimbugp/fenix.git && cd fenix
+git clone https://github.com/kimbugp/fenix.git && cd fenix && npm install
+
 ```
+- Copy the `.env.example` rename it to `.env` and update the environment variables accordingly
 
 ### Starting the backend
 
 - start the terminal and change directory to backend with `cd backend`
-- copy the `.env.example` rename it to `.env` and update the environment variables accordingly
 - Run
 
 ```
-npm start
+npm install && npm start
 ```
 
 ### Starting the frontend
 
-- start the terminal and run the following
+- start the terminal in the repo root and run the following
 
 ```
 npm start
@@ -46,7 +47,7 @@ npm start
 Go to the url
 `http://localhost:8080`
 
-- To login in as admin use the variable in the backend .env file
+- To login in as admin use the variable in the backend `.env` file
 
 ```
 ADMIN_NAME
