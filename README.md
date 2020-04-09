@@ -17,7 +17,28 @@
 - View Scripts created by users
 - View output of scripts
 
-## How to setup the project
+# How to setup the project
+
+## Full stack setup
+
+- Run
+
+```
+git clone https://github.com/kimbugp/fenix.git && cd fenix
+```
+
+- Copy the `.env.example` rename it to `.env` and update the environment variables accordingly
+- Run
+
+```
+bash start.sh
+```
+
+Go to the url
+`http://localhost:3000`
+
+
+## Separate set-up
 
 - Run
 
@@ -54,24 +75,6 @@ ADMIN_NAME
 ADMIN_PASSWORD
 ADMIN_EMAIL
 ```
-
-## Full stack setup
-
-- Run
-
-```
-git clone https://github.com/kimbugp/fenix.git && cd fenix
-```
-
-- Copy the `.env.example` rename it to `.env` and update the environment variables accordingly
-- Run
-
-```
-bash start.sh
-```
-
-Go to the url
-`http://localhost:3000`
 
 - To login in as admin use the variable in the backend .env file
 
